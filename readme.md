@@ -1,22 +1,51 @@
-# My first project
+# Audio Transcription to SRT
 
-uses FFMPEG and whisiper to take an audio file and convert it into a transcript.
+This project transcribes an audio file using OpenAI Whisper and saves the result as an SRT subtitle file in the same folder as the original audio.
 
-a simple CLI program that works in the terminal
-uses faster-whisper
-makes use of ffmpeg and venv
+## What it does
 
-the program:
-receives a file path
-check if the file exists and is supported
-loads the whisper model
-transcribes the audio
-saves the transcript to a file to a .txt file
+- Accepts an audio file path as a command-line argument
+- Loads the Whisper "base" model
+- Transcribes the audio into timed segments
+- Writes a matching `.srt` file with the same name as the input file
 
-## Features
+## Usage
 
-- Audio file transcription
+1. Install Python dependencies:
 
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Install FFmpeg on your system:
+
+   macOS (Homebrew):
+   ```bash
+   brew install ffmpeg
+   ```
+
+   Windows:
+   ```powershell
+   winget install Gyan.Dev.FFmpeg
+   ```
+
+3. Run the script:
+
+   ```bash
+   python main.py "/path/to/audio.wav"
+   ```
+
+4. The script creates a subtitle file such as:
+
+   ```bash
+   /path/to/audio.srt
+   ```
+
+## Requirements
+
+- Python
+- `openai-whisper`
+- FFmpeg
 
 ## License
 
