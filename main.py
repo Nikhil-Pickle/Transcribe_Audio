@@ -1,9 +1,13 @@
+import argparse
 from pathlib import Path
 
 import whisper
 
-# receive a file path from the user
-file_path = input("Please enter the absolute path to the audio file: ").strip()
+parser = argparse.ArgumentParser(description="Transcribe an audio file with Whisper.")
+parser.add_argument("file_path", help="Path to the audio file")
+args = parser.parse_args()
+
+file_path = args.file_path.strip()
 if len(file_path) >= 2 and file_path[0] == file_path[-1] and file_path[0] in {"'", '"'}:
     file_path = file_path[1:-1]
 file_path = Path(file_path).expanduser()
